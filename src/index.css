@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    background-color: #1b120c;
+    color: #f5efe4;
+    overflow-x: hidden;
+  }
+}
+
+/* Warm walnut tabletop surface with subtle studio vignette & fine grain */
+.walnut-tabletop {
+  background-color: #1d130d;
+  background-image:
+    radial-gradient(ellipse 80% 70% at 50% 45%, rgba(92, 56, 34, 0.42) 0%, rgba(36, 22, 14, 0.72) 60%, rgba(16, 10, 7, 0.96) 100%),
+    repeating-linear-gradient(
+      92deg,
+      rgba(255, 225, 190, 0.015) 0px,
+      rgba(255, 225, 190, 0.015) 2px,
+      transparent 2px,
+      transparent 9px
+    ),
+    repeating-linear-gradient(
+      88deg,
+      rgba(0, 0, 0, 0.14) 0px,
+      rgba(0, 0, 0, 0.14) 3px,
+      transparent 3px,
+      transparent 16px
+    );
+}
+
+@keyframes dice-tumble {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-16deg) scale(1.08) translateY(-4px);
+  }
+  50% {
+    transform: rotate(14deg) scale(1.1) translateY(-6px);
+  }
+  75% {
+    transform: rotate(-8deg) scale(1.04) translateY(-2px);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes token-halo {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0.35;
+  }
+}
+
+@keyframes token-hop-pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.24) translateY(-18%);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes burst-ring {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(2.35);
+    opacity: 0;
+  }
+}
+
+.animate-dice-tumble {
+  animation: dice-tumble 240ms cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.animate-token-halo {
+  animation: token-halo 1.2s ease-in-out infinite;
+}
+
+.animate-token-hop {
+  animation: token-hop-pop 110ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-burst-ring {
+  animation: burst-ring 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-dice-tumble,
+  .animate-token-halo,
+  .animate-token-hop,
+  .animate-burst-ring {
+    animation: none !important;
+  }
+}

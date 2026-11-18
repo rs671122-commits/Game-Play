@@ -1,0 +1,6 @@
+{
+  "name": "Ludo Royal",
+  "description": "Classic tabletop Ludo board game with smart AI opponents, local pass-and-play, tactile dice, and authentic rules.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
